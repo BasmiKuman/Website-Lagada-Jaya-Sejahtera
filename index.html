@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT. Lagada Jaya Sejahtera | Berinovasi untuk Masa Depan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        /* Default body style */
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            transition: background 2s ease;
+        }
+
+        /* Header & Footer */
+        nav, footer {
+            background-color: #000 !important;
+            color: #fff !important;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Modern gradient background */
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+
+        /* Content panels */
+        .tab-content,
+        .bg-white,
+        .bg-gray-100,
+        .bg-gray-50 {
+            background: rgba(255, 255, 255, 0.9) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 1rem;
+            z-index: 1;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effects */
+        .tab-content:hover,
+        .bg-white:hover,
+        .bg-gray-100:hover,
+        .bg-gray-50:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .nav-item.active {
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
+        }
+
+        /* Additional styles for better visual hierarchy */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .paragraph-block {
+            line-height: 1.6;
+        }
+
+        /* Partners scrolling animation */
+        .partners-scroll {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%);
+            padding: 2rem 0;
+        }
+
+        .partners-track {
+            display: inline-flex;
+            animation: scrollPartners 30s linear infinite;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .partners-track:hover {
+            animation-play-state: paused;
+        }
+
+        .partner-logo {
+            height: 80px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            filter: grayscale(1) opacity(0.7);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0) opacity(1);
+            transform: scale(1.1);
+        }
+
+        @keyframes scrollPartners {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .partner-logo {
+                height: 60px;
+                max-width: 150px;
+            }
+            
+            .partners-track {
+                gap: 2rem;
+            }
+        }
+
+        /* Logo hover effect */
+        .logo-link {
+            transition: all 0.3s ease;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="bg-black shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center space-x-4 logo-link" onclick="switchTab('home'); return false;">
+                    <img src="https://huggingface.co/spaces/Lakujoo/v-1-company-website/resolve/main/images/LJS LOGO 1.1.jpg" alt="Logo PT. Lagada Jaya Sejahtera" class="h-10 w-auto">
+                    <span class="text-xl font-bold text-white">PT. Lagada Jaya Sejahtera</span>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-item py-2 px-1 font-medium text-white hover:text-sky-500 transition" data-tab="home">Beranda</a>
+                    <a href="#" class="nav-item py-2 px-1 font-medium text-white hover:text-sky-500 transition" data-tab="about">Tentang Kami</a>
+                    <a href="#" class="nav-item py-2 px-1 font-medium text-white hover:text-sky-500 transition" data-tab="services">Layanan</a>
+                    <a href="#" class="nav-item py-2 px-1 font-medium text-white hover:text-sky-500 transition" data-tab="team">Tim</a>
+                    <a href="#" class="nav-item py-2 px-1 font-medium text-white hover:text-sky-500 transition" data-tab="contact">Kontak</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div class="md:hidden hidden mt-4" id="mobile-menu">
+                <a href="#" class="block py-2 px-4 text-sm text-white hover:bg-gray-800 transition nav-item" data-tab="home">Beranda</a>
+                <a href="#" class="block py-2 px-4 text-sm text-white hover:bg-gray-800 transition nav-item" data-tab="about">Tentang Kami</a>
+                <a href="#" class="block py-2 px-4 text-sm text-white hover:bg-gray-800 transition nav-item" data-tab="services">Layanan</a>
+                <a href="#" class="block py-2 px-4 text-sm text-white hover:bg-gray-800 transition nav-item" data-tab="team">Tim</a>
+                <a href="#" class="block py-2 px-4 text-sm text-white hover:bg-gray-800 transition nav-item" data-tab="contact">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div id="home" class="tab-content active">
+        <div class="relative text-white py-32" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('http://static.photos/office/1200x630/1') no-repeat center center; background-size: cover;">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-4xl mx-auto" data-aos="fade-up">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Buka Potensi Bisnis Anda</h1>
+                    <p class="text-xl md:text-2xl mb-8 opacity-90">
+                        PT. Lagada Jaya Sejahtera menawarkan solusi waralaba terpadu untuk bisnis kopi dan layanan PPOB.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Description Section -->
+        <div class="py-16 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                <p class="text-gray-600 mb-8 text-lg">
+                    PT. Lagada Jaya Sejahtera, yang didirikan pada tahun 2024, telah berkembang dari pasar digital menjadi penyedia solusi bisnis yang lengkap. Tim ahli kami berdedikasi untuk memberikan solusi inovatif yang membantu perusahaan berkembang di dunia yang semakin digital.
+                </p>
+                <p class="text-gray-600 text-lg">
+                    Kami percaya pada kekuatan teknologi untuk mengubah bisnis dan menciptakan dampak yang berarti. Pendekatan kami menggabungkan teknologi mutakhir dengan keahlian industri yang mendalam untuk memberikan solusi yang menghasilkan hasil nyata.
+                </p>
+            </div>
+        </div>
+
+        <!-- Services Summary Section -->
+        <div class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-3 gap-8 mt-12">
+                    <div class="bg-white rounded-xl shadow-lg p-8" data-aos="fade-up">
+                        <div class="text-blue-500 mb-4">
+                            <i data-feather="coffee" class="w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Waralaba Kopi</h3>
+                        <p class="text-gray-600 mb-6">
+                            Solusi waralaba kopi siap pakai kami mencakup semua yang Anda butuhkan untuk memulai bisnis Anda dengan cepat dan menguntungkan.
+                        </p>
+                        <ul class="text-gray-600 space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">✓</span>
+                                <span>Paket Peralatan Lengkap</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">✓</span>
+                                <span>Pasokan Biji Kopi Premium</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">✓</span>
+                                <span>Pelatihan Barista yang Komprehensif</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">✓</span>
+                                <span>Dukungan Pemasaran dan Branding</span>
+                            </li>
+                        </ul>
+                        <button onclick="switchTab('services')" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300">
+                            Pelajari Lebih Lanjut
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-8" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-blue-500 mb-4">
+                            <i data-feather="credit-card" class="w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Layanan PPOB</h3>
+                        <p class="text-gray-600 mb-6">
+                            Layanan titik pembayaran komprehensif yang menghasilkan aliran pendapatan tambahan untuk bisnis Anda.
+                        </p>
+                        <ul class="text-gray-600 space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">✓</span>
+                                <span>Pembayaran tagihan dan isi ulang pulsa seluler</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">✓</span>
+                                <span>Transaksi perbankan digital</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">✓</span>
+                                <span>Layanan E-Money dan dompet digital</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">✓</span>
+                                <span>Tingkat komisi yang kompetitif</span>
+                            </li>
+                        </ul>
+                        <button onclick="switchTab('services')" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300">
+                            Pelajari Lebih Lanjut
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-8" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-blue-500 mb-4">
+                            <i data-feather="trending-up" class="w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Event Organizer</h3>
+                        <p class="text-gray-600 mb-6">
+                            Membangun interaksi, memperkuat brand.
+                        </p>
+                        <ul class="text-gray-600 space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">✓</span>
+                                <span>EO profesional untuk komunitas, korporat, hingga publik</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">✓</span>
+                                <span>Mendukung konsep event tematik</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">✓</span>
+                                <span>Event Promosi & Branding</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">✓</span>
+                                <span>Event Pribadi</span>
+                            </li>
+                        </ul>
+                        <button onclick="switchTab('services')" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300">
+                            Pelajari Lebih Lanjut
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Past Events Section -->
+        <div class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Event Kami Sebelumnya</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        "Jejak acara yang membuktikan komitmen dan kreativitas kami."
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/DSC07976.jpg" alt="Event Peluncuran Waralaba" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Peluncuran Event Lakujoo Run 2025</h3>
+                            <p class="text-gray-500 mb-4">27 April 2025 di Balai Kota Sleman Yogyakarta</p>
+                            <p class="text-gray-600">Kegiatan Fun Run dengan total 1000+ peserta lari 5km</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/IMG_1437.JPG" alt="Seminar Bisnis" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Peluncuran Aplikasi Lakujoo</h3>
+                            <p class="text-gray-500 mb-4">19 September 2024</p>
+                            <p class="text-gray-600">Grand Launching Aplikasi Lakujoo yang dilaksanakan di Hotel Aston Kartika Grogol</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/DSC08953.jpg" alt="Pertemuan Mitra" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Booth Lakujoo Kopi di Acara Lakujoo Run 2025</h3>
+                            <p class="text-gray-500 mb-4">27 April 2025</p>
+                            <p class="text-gray-600">Pembukaan Booth Lakujoo Kopi untuk Acara Pernikahan Pribadi di Jakarta Timur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partners Section with Moving Logos -->
+        <div class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Mereka yang Percaya pada Kami</h2>
+                    <p class="text-gray-600">Kemitraan sukses di seluruh Indonesia</p>
+                </div>
+                
+                <!-- Moving Partners Logos -->
+                <div class="partners-scroll">
+                    <div class="partners-track">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/WhatsApp%20Image%202025-05-20%20at%2016.50.31.jpeg" alt="Hotel Aston Kartika Grogol" class="partner-logo">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/adi-karya-6620ad04de948f69c90af882.jpeg" alt="PT Adhi Karya (Persero) Tbk" class="partner-logo">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/logo.webp" alt="Partner Logo" class="partner-logo">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/PT%20WIRA%20ANGGINI%20SEJAHTERA%203.png" alt="PT Wira Anggini Sejahtera" class="partner-logo">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/Shakran-Logo.png" alt="Shakran" class="partner-logo">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/images.png" alt="Partner" class="partner-logo">
+                        <!-- Duplicate for seamless loop -->
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/WhatsApp%20Image%202025-05-20%20at%2016.50.31.jpeg" alt="Hotel Aston Kartika Grogol" class="partner-logo">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/adi-karya-6620ad04de948f69c90af882.jpeg" alt="PT Adhi Karya (Persero) Tbk" class="partner-logo">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/logo.webp" alt="Partner Logo" class="partner-logo">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/PT%20WIRA%20ANGGINI%20SEJAHTERA%203.png" alt="PT Wira Anggini Sejahtera" class="partner-logo">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/Shakran-Logo.png" alt="Shakran" class="partner-logo">
+                        <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/images.png" alt="Partner" class="partner-logo">
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <p class="text-gray-600 mb-6">
+                        Bergabunglah dengan <span class="font-bold text-blue-600">Mitra</span> yang telah mempercayai solusi bisnis kami
+                    </p>
+                    <button onclick="switchTab('contact')" class="px-8 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300 font-semibold">
+                        Jadilah Mitra Kami
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="tab-content py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                    <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/DSC00067.JPG" alt="Tentang Kami" class="rounded-lg shadow-xl">
+                </div>
+                <div class="md:w-1/2 md:pl-12" data-aos="fade-left">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Tentang PT. Lagada Jaya Sejahtera</h2>
+                    <p class="text-gray-600 mb-6">
+                        Didirikan pada tahun 2024, PT. Lagada Jaya Sejahtera telah berkembang dari pasar digital menjadi penyedia solusi bisnis yang komprehensif. 
+                        Tim ahli kami berdedikasi untuk memberikan solusi inovatif yang membantu bisnis berkembang di dunia yang semakin digital.
+                    </p>
+                    <p class="text-gray-600 mb-8">
+                        Kami percaya pada kekuatan teknologi untuk mengubah bisnis dan menciptakan dampak yang berarti. Pendekatan kami 
+                        menggabungkan teknologi mutakhir dengan keahlian industri yang mendalam untuk memberikan solusi yang menghasilkan hasil nyata.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="bg-white p-4 rounded-lg shadow-md flex-1" data-aos="zoom-in">
+                            <div class="text-blue-500 mb-2">
+                                <i data-feather="award" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2">TBD</h3>
+                            <p class="text-sm text-gray-600">TBD</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md flex-1" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="text-blue-500 mb-2">
+                                <i data-feather="users" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2">TBD</h3>
+                            <p class="text-sm text-gray-600">TBD</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div id="services" class="tab-content py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Solusi Bisnis Terintegrasi Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Ekosistem komprehensif kami mendukung pertumbuhan bisnis Anda di setiap tahap
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md mb-12 overflow-hidden">
+                <div class="divide-y divide-gray-200">
+                    <!-- Coffee Franchise Service 1 -->
+                    <div class="service-item bg-white rounded-xl shadow-lg overflow-hidden mb-8" data-aos="fade-up">
+                        <button class="w-full px-8 py-6 flex justify-between items-center focus:outline-none hover:bg-blue-50 transition-all duration-300">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i data-feather="coffee" class="text-blue-600 w-6 h-6"></i>
+                                </div>
+                                <div class="ml-6 text-left">
+                                    <h3 class="text-xl font-bold text-gray-800">Waralaba Booth Kopi</h3>
+                                    <p class="text-gray-500 mt-1">Solusi kedai kopi Merakyat</p>
+                                </div>
+                            </div>
+                            <i data-feather="chevron-down" class="transform transition-transform duration-300 text-gray-500 chevron-icon"></i>
+                        </button>
+                        <div class="px-8 pb-8 hidden service-details">
+                            <div class="grid md:grid-cols-2 gap-10 items-center">
+                                <div class="relative">
+                                    <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/WhatsApp%20Image%202025-09-22%20at%2015.30.00.jpeg" alt="Waralaba Booth Kopi" class="rounded-xl shadow-lg w-full h-auto">
+                                    <div class="absolute -bottom-4 -right-4 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md">
+                                        <div class="text-sm font-medium">Rp. 65.000.000</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                                        <h4 class="font-semibold text-blue-700 mb-2">Booth Besar</h4>
+                                        <p class="text-gray-700">Jadi Agen PPOB Gratis dengan nilai Rp. 2.500.000</p>
+                                    </div>
+                                    <ul class="space-y-3 mb-6">
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">Booth 2.5m x 3.5m</p>
+                                                <p class="text-gray-500 text-sm">Ukuran standar ruangan Barista</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">Espresso Maker Manual (Le Flair 58+)</p>
+                                                <p class="text-gray-500 text-sm">Grinder, Cup Sealer, Manual Brewing Set</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">Perlengkapan lengkap + bahan awal</p>
+                                                <p class="text-gray-500 text-sm">Aksesoris yang dibutuhkan dalam pembuatan kopi dan Bahan yang dibutuhkan untuk penjualan pertama</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">Marketing, Branding online</p>
+                                                <p class="text-gray-500 text-sm">Membantu mempromosikan Penjualan dan Branding secara online kepada tiap tiap Franchise</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <a href="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/KatalogFranchise.pdf" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 font-medium flex items-center">
+                                        <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                                        Unduh Katalog
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coffee Franchise Service 2 -->
+                    <div class="service-item bg-white rounded-xl shadow-lg overflow-hidden mb-8" data-aos="fade-up">
+                        <button class="w-full px-8 py-6 flex justify-between items-center focus:outline-none hover:bg-blue-50 transition-all duration-300">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i data-feather="coffee" class="text-blue-600 w-6 h-6"></i>
+                                </div>
+                                <div class="ml-6 text-left">
+                                    <h3 class="text-xl font-bold text-gray-800">Waralaba Booth Kopi</h3>
+                                    <p class="text-gray-500 mt-1">Solusi kedai kopi FLEKSIBEL</p>
+                                </div>
+                            </div>
+                            <i data-feather="chevron-down" class="transform transition-transform duration-300 text-gray-500 chevron-icon"></i>
+                        </button>
+                        <div class="px-8 pb-8 hidden service-details">
+                            <div class="grid md:grid-cols-2 gap-10 items-center">
+                                <div class="relative">
+                                    <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/WhatsApp%20Image%202025-09-23%20at%2010.01.18.jpeg" alt="Waralaba Booth Kopi" class="rounded-xl shadow-lg w-full h-auto">
+                                    <div class="absolute -bottom-4 -right-4 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md">
+                                        <div class="text-sm font-medium">Rp. 35.000.000</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                                        <h4 class="font-semibold text-blue-700 mb-2">Booth Standart</h4>
+                                        <p class="text-gray-700">Jadi Agen PPOB Gratis dengan nilai Rp. 2.500.000</p>
+                                    </div>
+                                    <ul class="space-y-3 mb-6">
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">Booth 2m x 2.5m</p>
+                                                <p class="text-gray-500 text-sm">Compact space</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">Espresso Maker Manual (Manusso Evo Pro)</p>
+                                                <p class="text-gray-500 text-sm">Grinder, Cup Sealer, Manual Brewing Set</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">Perlengkapan lengkap + bahan awal</p>
+                                                <p class="text-gray-500 text-sm">Aksesoris yang dibutuhkan dalam pembuatan kopi dan Bahan yang dibutuhkan untuk penjualan pertama</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">Marketing, Branding online</p>
+                                                <p class="text-gray-500 text-sm">Membantu mempromosikan Penjualan dan Branding secara online kepada tiap tiap Franchise</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <a href="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/KatalogFranchise.pdf" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 font-medium flex items-center">
+                                        <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                                        Unduh Katalog
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coffee Franchise Service 3 -->
+                    <div class="service-item bg-white rounded-xl shadow-lg overflow-hidden mb-8" data-aos="fade-up" data-aos-delay="100">
+                        <button class="w-full px-8 py-6 flex justify-between items-center focus:outline-none hover:bg-blue-50 transition-all duration-300">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i data-feather="coffee" class="text-blue-600 w-6 h-6"></i>
+                                </div>
+                                <div class="ml-6 text-left">
+                                    <h3 class="text-xl font-bold text-gray-800">Kopi Keliling (Koding)</h3>
+                                    <p class="text-gray-500 mt-1">Solusi Mobile & efisien</p>
+                                </div>
+                            </div>
+                            <i data-feather="chevron-down" class="transform transition-transform duration-300 text-gray-500 chevron-icon"></i>
+                        </button>
+                        <div class="px-8 pb-8 hidden service-details">
+                            <div class="grid md:grid-cols-2 gap-10 items-center">
+                                <div class="relative">
+                                    <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/WhatsApp%20Image%202025-09-23%20at%2009.59.52.jpeg" alt="Kopi Keliling (Koding)" class="rounded-xl shadow-lg w-full h-auto">
+                                    <div class="absolute -bottom-4 -right-4 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md">
+                                        <div class="text-sm font-medium">Mobilitas jemput Bola</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                                        <h4 class="font-semibold text-blue-700 mb-2">Paket Kopi Keliling Termasuk:</h4>
+                                        <p class="text-gray-700">Solusi kami terhadap perkembangan pasar Konsumen, menawarkan Kopi dimanapun konsumen berada. Jadi Agen PPOB Gratis dengan nilai Rp. 2.500.000</p>
+                                    </div>
+                                    <ul class="space-y-3 mb-6">
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">Sepeda Listrik Uwinfly lengkap dengan aksesoris</p>
+                                                <p class="text-gray-500 text-sm">Jarak Tempuh 40KM(kondisi rute mempengaruhi, seperti tanjakan dan turunan)</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">AKsesoris untuk kebutuhan dalam perjalanan</p>
+                                                <p class="text-gray-500 text-sm">Topi, Helm, Tas kecil, Rompi dll.</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">Produk Siap jual</p>
+                                                <p class="text-gray-500 text-sm">dapatkan total 500Cup untuk Produk awal(gabungan antara kopi dan Milk Series)</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                   <a href="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/FlyerKoding.pdf" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300font-medium flex items-center">
+                                        <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                                        Unduh Brosur Koding
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coffee Franchise Service 4 -->
+                    <div class="service-item bg-white rounded-xl shadow-lg overflow-hidden mb-8" data-aos="fade-up" data-aos-delay="200">
+                        <button class="w-full px-8 py-6 flex justify-between items-center focus:outline-none hover:bg-blue-50 transition-all duration-300">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i data-feather="coffee" class="text-blue-600 w-6 h-6"></i>
+                                </div>
+                                <div class="ml-6 text-left">
+                                    <h3 class="text-xl font-bold text-gray-800">Depot Kopi</h3>
+                                    <p class="text-gray-500 mt-1">Jadi Juragan Kopi Keliling</p>
+                                </div>
+                            </div>
+                            <i data-feather="chevron-down" class="transform transition-transform duration-300 text-gray-500 chevron-icon"></i>
+                        </button>
+                        <div class="px-8 pb-8 hidden service-details">
+                            <div class="grid md:grid-cols-2 gap-10 items-center">
+                                <div class="relative">
+                                    <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/IMG20250817095006.jpg" alt="Unit Kopi Mobile" class="rounded-xl shadow-lg w-full h-auto">
+                                    <div class="absolute -bottom-4 -right-4 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md">
+                                        <div class="text-sm font-medium">Rp. 200.000.000</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                                        <h4 class="font-semibold text-blue-700 mb-2">Paket Mobile Termasuk:</h4>
+                                        <p class="text-gray-700">Jadilah bagian dari Depot Kopi yang menyediakan Produk kopi untuk Kopi Keliling, serta dapatkan 8 Sepeda Listrik!. Jadi Agen PPOB Gratis dengan nilai Rp. 2.500.000</p>
+                                    </div>
+                                    <ul class="space-y-3 mb-6">
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">8 Unit Sepeda Listrik siap dagang</p>
+                                                <p class="text-gray-500 text-sm">Setiap unit sudah siap jalan dengan kebutuhan aksesorisnya (Tidak Termasuk Rider)</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">Perlengkapan Pendukung</p>
+                                                <p class="text-gray-500 text-sm">Perlengkapan Pendukung seperti Chiller dan Freezer akan disediakan (Masing - masing 1 Unit)</p>
+                                            </div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-5 w-5 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="check" class="text-blue-500 w-3 h-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-700 font-medium">Produk Penjualan</p>
+                                                <p class="text-gray-500 text-sm">Produk Penjualan awal berjumlah 2.400 Cup(belum termasuk Milk Series)</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 font-medium flex items-center">
+                                        <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                                        Unduh Brosur Depot Koding
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PPOB Services Section -->
+                    <div class="service-item bg-white rounded-xl shadow-lg overflow-hidden mb-8" data-aos="fade-up" data-aos-delay="100">
+                        <button class="w-full px-8 py-6 flex justify-between items-center focus:outline-none hover:bg-green-50 transition-all duration-300">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 h-12 w-12 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i data-feather="credit-card" class="text-green-600 w-6 h-6"></i>
+                                </div>
+                                <div class="ml-6 text-left">
+                                    <h3 class="text-xl font-bold text-gray-800">Layanan PPOB</h3>
+                                    <p class="text-gray-500 mt-1">Solusi pembayaran komprehensif</p>
+                                </div>
+                            </div>
+                            <i data-feather="chevron-down" class="transform transition-transform duration-300 text-gray-500 chevron-icon"></i>
+                        </button>
+                        <div class="px-8 pb-8 hidden service-details">
+                            <div class="grid md:grid-cols-2 gap-10 items-center">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1024&h=576&fit=crop&crop=center" alt="Layanan PPOB" class="rounded-xl shadow-lg w-full h-auto">
+                                    <div class="absolute -bottom-4 -right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md">
+                                        <div class="text-sm font-medium">DUKUNGAN 24/7</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="bg-green-50 p-4 rounded-lg mb-6">
+                                        <h4 class="font-semibold text-green-700 mb-2">Hub Pembayaran Lengkap:</h4>
+                                        <p class="text-gray-700">Layanan PPOB kami mengubah lokasi Anda menjadi pusat layanan keuangan lengkap, menawarkan akses mudah untuk transaksi penting sambil menghasilkan pendapatan stabil untuk bisnis Anda.</p>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4 mb-6">
+                                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm">
+                                            <div class="text-green-500 mb-1">
+                                                <i data-feather="smartphone" class="w-5 h-5"></i>
+                                            </div>
+                                            <p class="font-medium text-gray-700">Isi Ulang Pulsa</p>
+                                        </div>
+                                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm">
+                                            <div class="text-green-500 mb-1">
+                                                <i data-feather="dollar-sign" class="w-5 h-5"></i>
+                                            </div>
+                                            <p class="font-medium text-gray-700">Bayar Tagihan</p>
+                                        </div>
+                                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm">
+                                            <div class="text-green-500 mb-1">
+                                                <i data-feather="wifi" class="w-5 h-5"></i>
+                                            </div>
+                                            <p class="font-medium text-gray-700">Paket Internet</p>
+                                        </div>
+                                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm">
+                                            <div class="text-green-500 mb-1">
+                                                <i data-feather="truck" class="w-5 h-5"></i>
+                                            </div>
+                                            <p class="font-medium text-gray-700">Bayar Pengiriman</p>
+                                        </div>
+                                    </div>
+                                    <button class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-300 font-medium flex items-center">
+                                        <i data-feather="play-circle" class="w-4 h-4 mr-2"></i>
+                                        Tonton Video Demo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Organizer Service -->
+                    <div class="service-item bg-white rounded-xl shadow-lg overflow-hidden mb-8" data-aos="fade-up" data-aos-delay="200">
+                        <button class="w-full px-8 py-6 flex justify-between items-center focus:outline-none hover:bg-purple-50 transition-all duration-300">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <i data-feather="trending-up" class="text-purple-600 w-6 h-6"></i>
+                                </div>
+                                <div class="ml-6 text-left">
+                                    <h3 class="text-xl font-bold text-gray-800">Event Organizer</h3>
+                                    <p class="text-gray-500 mt-1">Event Organizer and Management</p>
+                                </div>
+                            </div>
+                            <i data-feather="chevron-down" class="transform transition-transform duration-300 text-gray-500 chevron-icon"></i>
+                        </button>
+                        <div class="px-8 pb-8 hidden service-details">
+                            <div class="grid md:grid-cols-2 gap-10 items-center">
+                                <div class="relative">
+                                    <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/WhatsApp%20Image%202025-05-24%20at%2017.35.23.jpeg" alt="Pertumbuhan Bisnis" class="rounded-xl shadow-lg w-full h-auto">
+                                    <div class="absolute -bottom-4 -right-4 bg-purple-500 text-white px-4 py-2 rounded-lg shadow-md">
+                                        <div class="text-sm font-medium">Event Management</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="bg-purple-50 p-4 rounded-lg mb-6">
+                                        <h4 class="font-semibold text-purple-700 mb-2">Lebih dari sekadar event — kami menghadirkan pengalaman yang menghubungkan brand, komunitas, dan pelanggan.</h4>
+                                        <p class="text-gray-700">PT. Lagada Jaya Sejahtera tidak hanya bergerak di bidang franchise dan digital services, tetapi juga memiliki divisi Event Organizer (EO) yang dirancang untuk membantu Anda menyelenggarakan acara dengan profesional, kreatif, dan penuh nilai tambah.</p>
+                                    </div>
+                                    <div class="space-y-4 mb-6">
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-8 w-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="bar-chart-2" class="text-purple-500 w-4 h-4"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="font-medium text-gray-700">Corporate Events</p>
+                                                <p class="text-gray-500 text-sm">Gathering perusahaan, seminar, peluncuran produk, workshop, dan training.</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-8 w-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="target" class="text-purple-500 w-4 h-4"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="font-medium text-gray-700">Community & Lifestyle Events</p>
+                                                <p class="text-gray-500 text-sm">Fun run, konser, festival kuliner, hingga event hobi.</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="h-8 w-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                                    <i data-feather="users" class="text-purple-500 w-4 h-4"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="font-medium text-gray-700">Private Events</p>
+                                                <p class="text-gray-500 text-sm">Acara ulang tahun, wedding party kecil, hingga private gathering.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300 font-medium flex items-center">
+                                        <i data-feather="calendar" class="w-4 h-4 mr-2"></i>
+                                        Jadwalkan Konsultasi Event
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- "Mengapa Memilih Solusi Terintegrasi Kami?" section - ONLY IN SERVICES PAGE -->
+            <div class="bg-white rounded-xl shadow-lg p-12 mt-12" data-aos="fade-up">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Mengapa Memilih Solusi Terintegrasi Kami?</h3>
+                        <p class="text-gray-600 mb-6">
+                            Kombinasi unik antara waralaba kopi dan layanan PPOB kami menciptakan beberapa aliran pendapatan dalam satu lokasi bisnis, memaksimalkan potensi penghasilan Anda.
+                        </p>
+                        <ul class="text-gray-600 space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">•</span>
+                                <span>Lalu lintas pelanggan PPOB yang lebih tinggi meningkatkan penjualan kopi</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">•</span>
+                                <span>Biaya operasional bersama meningkatkan profitabilitas keseluruhan</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">•</span>
+                                <span>Pemasaran sinergis menarik lebih banyak pelanggan</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-3">•</span>
+                                <span>Pendapatan terdiversifikasi mengurangi risiko bisnis</span>
+                            </li>
+                        </ul>
+                        <button class="px-8 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300 font-semibold">
+                            Mulai Hari Ini
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=640&h=360&fit=crop&crop=center" alt="Solusi Bisnis Terintegrasi" class="rounded-lg shadow-xl w-full">
+                        <div class="absolute -bottom-6 -right-6 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg">
+                            <div class="text-xl font-bold">2X</div>
+                            <div class="text-sm">Potensi Pendapatan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div id="team" class="tab-content py-20 bg-gray-100">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Tim Kepemimpinan Kami</h2>
+                <p class="section-subtitle">
+                    Profesional berdedikasi yang berkomitmen pada kesuksesan Anda dan pertumbuhan bersama
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass-card text-center" data-aos="zoom-in">
+                    <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/WhatsApp%20Image%202025-09-02%20at%2015.06.12.jpeg" alt="Anggota Tim" class="w-24 h-24 rounded-full mx-auto mb-4">
+                    <h3 class="font-bold text-lg text-gray-800">Komisaris</h3>
+                    <p class="text-sky-500 mb-2 font-medium">Mayjen TNI (Purn) Darwin Haroen, S.IP</p>
+                    <div class="paragraph-block text-sm">
+                        <p class="text-gray-600">
+                            TBD
+                        </p>
+                    </div>
+                    <div class="flex justify-center space-x-3 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-sky-500 transition"><i data-feather="linkedin" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                <div class="glass-card text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/WhatsApp%20Image%202025-09-04%20at%2011.21.17.jpeg" alt="Anggota Tim" class="w-24 h-24 rounded-full mx-auto mb-4">
+                    <h3 class="font-bold text-lg text-gray-800">Direktur Utama</h3>
+                    <p class="text-sky-500 mb-2 font-medium">Ermalia Margaretha, S.Ip</p>
+                    <div class="paragraph-block text-sm">
+                        <p class="text-gray-600">
+                            TBD
+                        </p>
+                    </div>
+                    <div class="flex justify-center space-x-3 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-sky-500 transition"><i data-feather="linkedin" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                <div class="glass-card text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/WhatsApp%20Image%202025-09-02%20at%2009.48.29.jpeg" alt="Anggota Tim" class="w-24 h-24 rounded-full mx-auto mb-4">
+                    <h3 class="font-bold text-lg text-gray-800">Irfan Budiman</h3>
+                    <p class="text-sky-500 mb-2 font-medium">Direktur Pengembangan Bisnis & IT</p>
+                    <div class="paragraph-block text-sm">
+                        <p class="text-gray-600">
+                            TBD
+                        </p>
+                    </div>
+                    <div class="flex justify-center space-x-3 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-sky-500 transition"><i data-feather="linkedin" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                <div class="glass-card text-center" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/WhatsApp%20Image%202025-09-04%20at%2011.21.20.jpeg" alt="Anggota Tim" class="w-24 h-24 rounded-full mx-auto mb-4">
+                    <h3 class="font-bold text-lg text-gray-800">Rudi Hartono</h3>
+                    <p class="text-sky-500 mb-2 font-medium">Direktur Pemasaran & Komunikasi</p>
+                    <div class="paragraph-block text-sm">
+                        <p class="text-gray-600">
+                            TBD
+                        </p>
+                    </div>
+                    <div class="flex justify-center space-x-3 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-sky-500 transition"><i data-feather="linkedin" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                <div class="glass-card text-center" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://huggingface.co/spaces/Corporateadmin/v-3-website-ljs/resolve/main/images/WhatsApp%20Image%202025-07-08%20at%2010.40.34.jpeg" alt="Anggota Tim" class="w-24 h-24 rounded-full mx-auto mb-4">
+                    <h3 class="font-bold text-lg text-gray-800">Erwin Disky Rinaldo</h3>
+                    <p class="text-sky-500 mb-2 font-medium">Direktur Bagian Umum</p>
+                    <div class="paragraph-block text-sm">
+                        <p class="text-gray-600">
+                            TBD
+                        </p>
+                    </div>
+                    <div class="flex justify-center space-x-3 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-sky-500 transition"><i data-feather="linkedin" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contact Section -->
+    <div id="contact" class="tab-content py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Hubungi Kami</h2>
+                    <p class="text-gray-600">
+                        Punya proyek dalam pikiran atau ingin tahu lebih lanjut tentang layanan kami? Kami ingin mendengar dari Anda.
+                    </p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-8 shadow-md" data-aos="fade-up">
+                    <form>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Nama</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 mb-2">Subjek</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 mb-2">Pesan</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 transition w-full md:w-auto">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 mt-16">
+                    <div class="text-left" data-aos="fade-up">
+                        <div class="bg-sky-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="map-pin" class="text-sky-500 w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Lokasi</h3>
+                        <p class="text-gray-600">Jl. Cendrawasih No. 1 RT/RW 1/10 Halim Perdana Kusumah, Makasar, Jakarta Timur, 13610, DKI Jakarta, Indonesia.</p>
+                    </div>
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="bg-sky-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="mail" class="text-sky-500 w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Email</h3>
+                        <p class="text-gray-600"><a href="/cdn-cgi/l/email-protection#0e676068614e626f696f6a6f646f776f7d6b646f667a6b7c6f206d6163" class="text-blue-600 hover:underline"><span class="__cf_email__" data-cfemail="513a3d353c113f323432373239322a32203639323b273621327d303c3e">[Corporate@lakujoo.com]</span></a></p>
+                    </div>
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="bg-sky-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="phone" class="text-sky-500 w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">No. Handphone</h3>
+                        <p class="text-gray-600">+62 821 9996 8492</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <a href="#" class="flex items-center space-x-2 mb-4 logo-link" onclick="switchTab('home'); return false;">
+                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">LJS</div>
+                        <span class="text-xl font-bold">PT. Lagada Jaya Sejahtera</span>
+                    </a>
+                    <p class="text-gray-400 mb-4">
+                        Membangun ekosistem bisnis berkelanjutan melalui solusi dan kemitraan terintegrasi.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Tautan Cepat</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition nav-item" data-tab="home">Beranda</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition nav-item" data-tab="about">Tentang Kami</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition nav-item" data-tab="services">Layanan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition nav-item" data-tab="team">Tim</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition nav-item" data-tab="contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Layanan</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Waralaba Kopi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Layanan PPOB</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Event Organizer</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition"></a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition"></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Jam Kerja</h3>
+                    <p class="text-gray-400 mb-2">
+                        Senin - Jumat: 09:00 - 17:00
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                       Butuh bantuan di luar jam kerja?
+Tinggalkan pesan untuk kami dan kami akan menghubungi Anda sesegera mungkin.
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>© 2024 PT. Lagada Jaya Sejahtera. Hak cipta dilindungi undang-undang.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Global function to switch tabs
+        function switchTab(tabId) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            const activeTab = document.getElementById(tabId);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+            
+            // Update active nav item
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Add active class to corresponding nav item
+            const activeNavItem = document.querySelector(`[data-tab="${tabId}"]`);
+            if (activeNavItem && activeNavItem.classList.contains('nav-item')) {
+                activeNavItem.classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS animations
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-in-out',
+                    once: true
+                });
+            }
+
+            // Initialize feather icons
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+
+        // Expandable service items
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.service-item button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const serviceItem = button.closest('.service-item');
+                    const details = serviceItem.querySelector('.service-details');
+                    const icon = button.querySelector('i[data-feather="chevron-down"]');
+                    
+                    // Toggle details visibility
+                    details.classList.toggle('hidden');
+                    
+                    // Rotate chevron icon
+                    if (details.classList.contains('hidden')) {
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+        });
+
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('[data-tab]');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Tab switching
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    switchTab(tabId);
+                    
+                    // Close mobile menu if open
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Set home tab as active by default
+            const homeTab = document.getElementById('home');
+            if (homeTab) {
+                homeTab.classList.add('active');
+            }
+            
+            // Set first nav item as active
+            if (navItems.length > 0) {
+                navItems[0].classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
