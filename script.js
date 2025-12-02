@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (name && email && message) {
                 // Redirect to WhatsApp with pre-filled message
                 const whatsappMessage = `Halo, saya ${name}. Email: ${email}. ${message}`;
-                const whatsappUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(whatsappMessage)}`;
+                const whatsappUrl = `https://wa.me/6282199968492?text=${encodeURIComponent(whatsappMessage)}`;
                 window.open(whatsappUrl, '_blank');
                 
                 // Reset form
