@@ -361,5 +361,5 @@ function openLightbox(imageSrc) {
 
 // WhatsApp Button Click Handler
 function openWhatsApp() {
-    window.open('https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20bertanya%20tentang%20layanan%20PT.%20Lagada%20Jaya%20Sejahtera', '_blank');
+    window.open('https://wa.me/6282199968492?text=Halo,%20saya%20ingin%20bertanya%20tentang%20layanan%20PT.%20Lagada%20Jaya%20Sejahtera', '_blank');
 }
